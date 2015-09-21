@@ -7,7 +7,6 @@ class Display {
 
   color displayColour;
 
-
   Display(int _displayX, int _displayY, int _displayWidthX, int _displayHeightY) {
 
     displayX = _displayX;
@@ -17,9 +16,11 @@ class Display {
   }
 
   void drawDisplay(color displayColour) {
-
+  
     fill(displayColour);
 
     rect(displayX, displayY, displayWidthX, displayHeightY);
+    fill(0);
+    text(some, displayX+displayWidthX/2, displayY+displayHeightY/2);
   }
 }

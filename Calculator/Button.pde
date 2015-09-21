@@ -10,6 +10,8 @@ class Button {
   color buttonColour;
   color textColour;
 
+  //boolean click = false;
+
   //The button class constructor accepts 5 variables
   //x pos, y pos, width, height, and button label(String)
   Button(int _buttonXpos, int _buttonYpos, int _buttonwidth, int _buttonheight, String _buttonName) {
@@ -34,13 +36,15 @@ class Button {
     text(buttonName, buttonXpos+buttonwidth/2, buttonYpos+buttonheight/2);
   }
 
-//This method checks if a button has been pressed
-//The buttonPressed boolean returns true if the button has been pressed
+  //This method checks if a button has been pressed
+  //The buttonPressed boolean returns true if the button has been pressed
   boolean buttonPressed() {
 
     boolean buttonPressed = false;
 
-    if (mouseX > buttonXpos && mouseX < buttonXpos + buttonwidth && mouseY > buttonYpos && mouseY < buttonYpos + buttonheight && mousePressed) {
+    if (mouseX > buttonXpos && mouseX < buttonXpos + buttonwidth && mouseY > buttonYpos && mouseY < buttonYpos + buttonheight) {
+
+      click = false;
 
       buttonPressed = true;
       return buttonPressed;
@@ -50,4 +54,18 @@ class Button {
       return buttonPressed;
     }
   }
+
+  //boolean click() {
+
+  // boolean click = false;
+
+  // return click;
+  //}
+
+  //void mouseClicked() {
+
+  // click = true;
+  //}
+
+
 }
