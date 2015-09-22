@@ -45,6 +45,7 @@ class Button {
     if (mouseX > buttonXpos && mouseX < buttonXpos + buttonwidth && mouseY > buttonYpos && mouseY < buttonYpos + buttonheight) {
 
       click = false;
+      moveon = moveon +1;
 
       buttonPressed = true;
       return buttonPressed;
