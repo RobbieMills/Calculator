@@ -45,6 +45,7 @@ class Button {
     if (mouseX > buttonXpos && mouseX < buttonXpos + buttonwidth && mouseY > buttonYpos && mouseY < buttonYpos + buttonheight) {
 
       click = false;
+      //moveon integer is -1 so the first num is in array slot 0
       moveon = moveon +1;
 
       buttonPressed = true;
@@ -67,6 +68,4 @@ class Button {
 
   // click = true;
   //}
-
-
 }

@@ -13,50 +13,44 @@ Button seven = new Button(275, 340, 50, 50, "7");
 Button eight = new Button(330, 340, 50, 50, "8");
 Button nine = new Button(385, 340, 50, 50, "9");
 
-Button multiply = new Button(450, 340, 50, 50, "*");
-
-int[] test = new int[10];
+Button multiply = new Button(440, 340, 50, 50, "*");
 
 //Clear string
 Button clear = new Button(440, 450, 50, 50, "C");
 //Currently shows size of string.  Plan is to delete one last string index.
 Button delete = new Button(440, 395, 50, 50, "DEL");
-
+//Calculator screen
 Display display = new Display(100, 150, 600, 100);
+
+int[] test = new int[10];
+
+//integer created to move one array place on each mouse click
+//previously the first array slot would be overwritten
+//moveon integer is -1 so the first num is in array slot 0
+
+int moveon = -1;
 
 String some = "";
 
 boolean click = false;
-//boolean operatorselected = false;
-
-
-//int[] test = new int[10];
-
-
-//integer created to move one array place on each mouse click
-//previously the first array slot would be overwritten
-int moveon = 0;
 
 void setup() {
 
   size(800, 600);
-
   textAlign(CENTER);
 }
 
 void draw() {  
 
-  fill(255,0,0);
+  //background(255);
+
+  fill(255, 0, 0);
   println(test);
   //Testing integet array calculation - Success
   //test[0] = 2;
   //test[1] = 5;
   //test[2] = 10;
   //println(test[0]*test[2]);
-
-  //background(255);
-  //fill(0);
-  //text(some, 100, 20);
 
   one.drawButton(#FFFFFF, #000000);
   two.drawButton(#FFFFFF, #000000);
@@ -73,31 +67,35 @@ void draw() {
   clear.drawButton(#FFFFFF, #000000);
   delete.drawButton(#FFFFFF, #000000);
 
-
   display.drawDisplay(#FFFFFF);
 
+  //Put in to avoid crashes when the array goes out of bounds
+  //During testing the array is/was only 10 spaces long
+  if (moveon == 9) {
+
+    exit();
+  }
 
   //click is a boolean which determines mouse clicks
   if (click && one.buttonPressed()) {
 
+    //Without this the boolean remains true and multiple numbers appear in the string
     click = false;
 
-    //println("1");
-
-    //fill(255, 0, 0);
-    //text("1", 325, 200);
     some = some + "1 " + " ";
 
     test[0+moveon] = 1;
+
+    //if (click && multiply.buttonPressed()) {
+
+    //  exit();
+    //}
   }
+
   if (click && two.buttonPressed()) {
 
     click = false;
 
-    //println("2");
-
-    //fill(255, 0, 0);
-    //text("2", 380, 200);
     some = some + "2 " + " ";
 
     test[0+moveon] = 2;
@@ -106,10 +104,6 @@ void draw() {
 
     click = false;
 
-    //println("3");
-
-    //fill(255, 0, 0);
-    //text("3", 430, 200);
     some = some + "3 " + " ";
 
     test[0+moveon] = 3;
@@ -119,10 +113,6 @@ void draw() {
 
     click = false;
 
-    //println("3");
-
-    //fill(255, 0, 0);
-    //text("3", 430, 200);
     some = some + "4 " + " ";
 
     test[0+moveon] = 4;
@@ -131,10 +121,6 @@ void draw() {
 
     click = false;
 
-    //println("3");
-
-    //fill(255, 0, 0);
-    //text("3", 430, 200);
     some = some + "5 " + " ";
 
     test[0+moveon] = 5;
@@ -143,10 +129,6 @@ void draw() {
 
     click = false;
 
-    //println("3");
-
-    //fill(255, 0, 0);
-    //text("3", 430, 200);
     some = some + "6 " + " ";
 
     test[0+moveon] = 6;
@@ -155,10 +137,6 @@ void draw() {
 
     click = false;
 
-    //println("3");
-
-    //fill(255, 0, 0);
-    //text("3", 430, 200);
     some = some + "7 " + " ";
 
     test[0+moveon] = 7;
@@ -167,10 +145,6 @@ void draw() {
 
     click = false;
 
-    //println("3");
-
-    //fill(255, 0, 0);
-    //text("3", 430, 200);
     some = some + "8 " + " ";
 
     test[0+moveon] = 8;
@@ -179,10 +153,6 @@ void draw() {
 
     click = false;
 
-    //println("3");
-
-    //fill(255, 0, 0);
-    //text("3", 430, 200);
     some = some + "9 " + " ";
 
     test[0+moveon] = 9;
@@ -192,17 +162,12 @@ void draw() {
 
     click = false;
 
-    //println("3");
-
-    //fill(255, 0, 0);
-    //text("3", 430, 200);
-
     //Resets the string
     some = "";
 
-
     //clears test array of values
-    for (int i = 0; i < 10; i++) {
+    // i < length of the test array 
+    for (int i = 0; i < test.length; i++) {
 
       test[i] = 0;
     }
@@ -212,11 +177,6 @@ void draw() {
 
     click = false;
 
-    //println("3");
-
-    //fill(255, 0, 0);
-    //text("3", 430, 200);
-
     //divided by 3 because because 2 spaces are added after each character to space them out
     println(some.length()/3);
   }
@@ -224,47 +184,15 @@ void draw() {
   if (click && multiply.buttonPressed()) {
 
     click = false;
-    
-    
 
-    //operatorselected = true;
+    some = "";
 
-    //println("3");
-
-    //fill(255, 0, 0);
-    //text("3", 430, 200);
-
-    //divided by 3 because because 2 spaces are added after each character to space them out
-    //println(some.length()/3);
+    text(test[0]*test[0], 400, 50);
+    //acol = (255);
   }
-
-  //if (click == true) {
-
-  // exit();
-  //}
-
-  //if (operatorselected = true) {
-
-  //background(255,0,0);
-  //}
 }
-
-
-//boolean click() {
-
-//boolean click = false;
-//return click;
-//}
 
 void mouseClicked() {
 
   click = true;
 }
-
-//boolean operatorselected(){
-
-//  boolean operatorselected = false;
-
-//  return operatorselected;
-
-//}
