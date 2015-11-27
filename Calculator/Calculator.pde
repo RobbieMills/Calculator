@@ -1,24 +1,28 @@
 //Robbie Mills 
 //Calculator
 
-Button one = new Button(275, 450, 50, 50, "1");
-Button two = new Button(330, 450, 50, 50, "2");
-Button three = new Button(385, 450, 50, 50, "3");
+//research parseInt to convert a string to an int -     http://stackoverflow.com/questions/5585779/converting-string-to-int-in-java
 
-Button four = new Button(275, 395, 50, 50, "4");
-Button five = new Button(330, 395, 50, 50, "5");
-Button six = new Button(385, 395, 50, 50, "6");
+//slider class, slider
 
-Button seven = new Button(275, 340, 50, 50, "7");
-Button eight = new Button(330, 340, 50, 50, "8");
-Button nine = new Button(385, 340, 50, 50, "9");
+Button one = new Button(275, 450, 50, 50, 7, "1");
+Button two = new Button(330, 450, 50, 50, 7, "2");
+Button three = new Button(385, 450, 50, 50, 7, "3");
 
-Button multiply = new Button(440, 340, 50, 50, "*");
+Button four = new Button(275, 395, 50, 50, 7, "4");
+Button five = new Button(330, 395, 50, 50, 7, "5");
+Button six = new Button(385, 395, 50, 50, 7, "6");
+
+Button seven = new Button(275, 340, 50, 50, 7, "7");
+Button eight = new Button(330, 340, 50, 50, 7, "8");
+Button nine = new Button(385, 340, 50, 50, 7, "9");
+
+Button multiply = new Button(440, 340, 50, 50, 7, "*");
 
 //Clear string
-Button clear = new Button(440, 450, 50, 50, "C");
+Button clear = new Button(440, 450, 50, 50, 7, "C");
 //Currently shows size of string.  Plan is to delete one last string index.
-Button delete = new Button(440, 395, 50, 50, "DEL");
+Button delete = new Button(440, 395, 50, 50, 7, "DEL");
 //Calculator screen
 Display display = new Display(100, 150, 600, 100);
 
@@ -34,45 +38,67 @@ String some = "";
 
 boolean click = false;
 
+//int y = Integer.parseInt(some);
+
 void setup() {
 
   size(800, 600);
-  textAlign(CENTER);
+  textAlign(CENTER, CENTER);
+  smooth();
 }
 
 void draw() {  
 
   //background(255);
+//int foo = Integer.parseInt("1234");
+
+//println(y);
 
   fill(255, 0, 0);
-  println(test);
-  //Testing integet array calculation - Success
-  //test[0] = 2;
-  //test[1] = 5;
-  //test[2] = 10;
-  //println(test[0]*test[2]);
+  //println(y);
 
-  one.drawButton(#FFFFFF, #000000);
-  two.drawButton(#FFFFFF, #000000);
-  three.drawButton(#FFFFFF, #000000);
-  four.drawButton(#FFFFFF, #000000);
-  five.drawButton(#FFFFFF, #000000);
-  six.drawButton(#FFFFFF, #000000);
-  seven.drawButton(#FFFFFF, #000000);
-  eight.drawButton(#FFFFFF, #000000);
-  nine.drawButton(#FFFFFF, #000000);
+  one.drawButton();
+  one.changeColourOnMouseHover(mouseX, mouseY);
 
-  multiply.drawButton(#FFFFFF, #000000);
+  two.drawButton();
+  two.changeColourOnMouseHover(mouseX, mouseY);
 
-  clear.drawButton(#FFFFFF, #000000);
-  delete.drawButton(#FFFFFF, #000000);
+  three.drawButton();
+  three.changeColourOnMouseHover(mouseX, mouseY);
+
+  four.drawButton();
+  four.changeColourOnMouseHover(mouseX, mouseY);
+
+  five.drawButton();
+  five.changeColourOnMouseHover(mouseX, mouseY);
+
+  six.drawButton();
+  six.changeColourOnMouseHover(mouseX, mouseY);
+
+  seven.drawButton();
+  seven.changeColourOnMouseHover(mouseX, mouseY);
+
+  eight.drawButton();
+  eight.changeColourOnMouseHover(mouseX, mouseY);
+
+  nine.drawButton();
+  nine.changeColourOnMouseHover(mouseX, mouseY);
+
+  multiply.drawButton();
+  multiply.changeColourOnMouseHover(mouseX, mouseY);
+
+
+  clear.drawButton();
+  clear.changeColourOnMouseHover(mouseX, mouseY);
+
+  delete.drawButton();
+  delete.changeColourOnMouseHover(mouseX, mouseY);
 
   display.drawDisplay(#FFFFFF);
 
   //Put in to avoid crashes when the array goes out of bounds
   //During testing the array is/was only 10 spaces long
   if (moveon == 9) {
-
     exit();
   }
 
@@ -85,11 +111,6 @@ void draw() {
     some = some + "1 " + " ";
 
     test[0+moveon] = 1;
-
-    //if (click && multiply.buttonPressed()) {
-
-    //  exit();
-    //}
   }
 
   if (click && two.buttonPressed()) {
@@ -164,6 +185,9 @@ void draw() {
 
     //Resets the string
     some = "";
+
+    //resets moveon to prevent exit() when clear has been used
+     moveon = -1;
 
     //clears test array of values
     // i < length of the test array 

@@ -6,6 +6,8 @@ class Display {
   int displayHeightY;
 
   color displayColour;
+  color strokeCol = 0;
+
 
   Display(int _displayX, int _displayY, int _displayWidthX, int _displayHeightY) {
 
@@ -16,8 +18,11 @@ class Display {
   }
 
   void drawDisplay(color displayColour) {
-  
+
+    stroke(strokeCol);
+
     fill(displayColour);
+    strokeWeight(4);
 
     rect(displayX, displayY, displayWidthX, displayHeightY);
     fill(0);
