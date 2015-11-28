@@ -48,12 +48,10 @@ class Button {
 
     boolean buttonPressed = false;
 
-    if (mouseX > buttonXpos && mouseX < buttonXpos + buttonwidth && mouseY > buttonYpos && mouseY < buttonYpos + buttonheight) {
 
-      click = false;
+    if (mouseX > buttonXpos && mouseX < buttonXpos + buttonwidth && mouseY > buttonYpos && mouseY < buttonYpos + buttonheight && click == true) {
+
       //moveon integer is -1 so the first num is in array slot 0
-      moveon = moveon +1;
-
       buttonPressed = true;
       return buttonPressed;
     } else {
@@ -68,7 +66,6 @@ class Button {
     if ((mouseXPosition > buttonXpos) && (mouseXPosition < (buttonXpos + buttonwidth)) 
       && (mouseYPosition > buttonYpos) && (mouseYPosition < (buttonYpos + buttonheight))) {
 
-
       strokeCol = #FCBD33;
 
       fillchange --;
@@ -78,6 +75,7 @@ class Button {
         fillchange ++;
       }
     } else {
+
       if (fillchange < 255) {
 
         fillchange ++;
